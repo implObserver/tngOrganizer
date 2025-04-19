@@ -34,9 +34,9 @@ fun ProgramsScreen(onMainClick: () -> Unit) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Тут программы!")
+            Text("Мои программы:")
             Button(onClick = onMainClick) {
-                Text("Перейти к программам")
+                Text("Перейти на главную")
             }
             Spacer(modifier = Modifier.height(16.dp))
         }

@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "tngOrganizer"
 include(":app")
  
+include("app:src:main:java:com:example:tngorganizer:gadgets:etalonPrograms")
