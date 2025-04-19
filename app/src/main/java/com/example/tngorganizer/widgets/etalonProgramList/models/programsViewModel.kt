@@ -1,16 +1,29 @@
-import android.content.ClipData.Item
+package com.example.tngorganizer.widgets.etalonProgramList.models
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tngorganizer.services.dao.etalon.ProgramDao
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import com.example.tngorganizer.services.models.etalon.ProgramEntity
+import com.example.tngorganizer.services.repositories.etalon.ProgramRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MyViewModel : ViewModel() {
-    private val _items = MutableStateFlow<List<Item>>(emptyList())
-    val items: StateFlow<List<Item>> = _items
+@HiltViewModel
+class ProgramViewModel @Inject constructor(
+    private val repository: ProgramRepository
+) : ViewModel() {
 
-    fun loadItems() {
+    private val _programs = MutableStateFlow<List<ProgramEntity>>(emptyList())
+    val programs: StateFlow<List<ProgramEntity>> = _programs.asStateFlow()
 
+    init {
+        loadPrograms()
+    }
+
+    private fun loadPrograms() {
+        viewModelScope.launch {
+            repository.getAllPrograms()
+                .collect { _programs.value = it }
+        }
     }
 }
