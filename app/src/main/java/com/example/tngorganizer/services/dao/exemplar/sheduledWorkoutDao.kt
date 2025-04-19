@@ -1,3 +1,5 @@
+package com.example.tngorganizer.services.dao.exemplar
+
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Embedded
@@ -7,6 +9,7 @@ import androidx.room.Relation
 import androidx.room.Transaction
 import androidx.room.Update
 import com.example.tngorganizer.services.models.etalon.WorkoutEntity
+import com.example.tngorganizer.services.models.exemplar.ScheduledWorkoutEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
