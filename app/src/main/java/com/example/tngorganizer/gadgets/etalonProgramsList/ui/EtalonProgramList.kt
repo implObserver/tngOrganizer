@@ -1,4 +1,4 @@
-package com.example.tngorganizer.widgets.etalonProgramList.ui
+package com.example.tngorganizer.gadgets.etalonProgramsList.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,10 +9,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.tngorganizer.features.addEtalonProgram.ui.AddEtalonProgramInput
+import com.example.tngorganizer.widgets.etalonProgramItem.ui.EtalonProgramItem
 import com.example.tngorganizer.widgets.etalonProgramList.models.ProgramViewModel
 
 @Composable
-fun ProgramListWidget(
+fun EtalonProgramsList(
     viewModel: ProgramViewModel = hiltViewModel()
 ) {
     val programs by viewModel.programs.collectAsState()
@@ -35,8 +37,9 @@ fun ProgramListWidget(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(programs) { program ->
-                Text(text = program.name)
+                EtalonProgramItem(program)
             }
         }
     }
+    AddEtalonProgramInput()
 }

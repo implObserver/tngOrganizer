@@ -1,4 +1,4 @@
-package com.example.tngorganizer
+package com.example.tngorganizer.app
 
 import com.example.tngorganizer.navigations.MainNavGraph
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.tngorganizer.ui.theme.TngOrganizerTheme
+import com.example.tngorganizer.app.ui.theme.TngOrganizerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 

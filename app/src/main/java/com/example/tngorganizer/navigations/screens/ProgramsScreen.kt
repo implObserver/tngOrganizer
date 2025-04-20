@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.tngorganizer.gadgets.etalonProgramsOrganizer.ui.EtalonProgramsOrganizer
+import com.example.tngorganizer.gadgets.etalonProgramsList.ui.EtalonProgramsList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,7 +29,7 @@ fun ProgramsScreen(onMainClick: () -> Unit) {
             Text("Мои программы:")
             Spacer(modifier = Modifier.height(8.dp))
 
-            EtalonProgramsOrganizer() // 👈 Добавили виджет программ сюда
+            EtalonProgramsList() // 👈 Добавили виджет программ сюда
 
             Spacer(modifier = Modifier.height(16.dp))
 

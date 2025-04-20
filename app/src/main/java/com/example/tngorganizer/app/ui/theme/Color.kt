@@ -1,4 +1,4 @@
-package com.example.tngorganizer.ui.theme
+package com.example.tngorganizer.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
