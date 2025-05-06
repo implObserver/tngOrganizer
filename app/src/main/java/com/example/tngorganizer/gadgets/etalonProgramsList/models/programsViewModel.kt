@@ -1,4 +1,4 @@
-package com.example.tngorganizer.widgets.etalonProgramList.models
+package com.example.tngorganizer.gadgets.etalonProgramsList.models
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tngorganizer.services.models.etalon.ProgramEntity

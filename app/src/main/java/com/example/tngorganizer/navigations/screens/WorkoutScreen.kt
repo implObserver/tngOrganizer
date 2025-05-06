@@ -6,15 +6,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.tngorganizer.gadgets.etalonProgramsList.ui.EtalonProgramsList
+import com.example.tngorganizer.gadgets.etalonWorkoutList.ui.EtalonWorkoutList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProgramsScreen(onMainClick: () -> Unit) {
+fun WorkoutScreen(onMainClick: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Программы") }
+                title = { Text("Тренировки") }
             )
         }
     ) { innerPadding ->
@@ -23,13 +23,13 @@ fun ProgramsScreen(onMainClick: () -> Unit) {
                 .fillMaxSize()
                 .padding(innerPadding)
                 .padding(16.dp),
-            verticalArrangement = Arrangement.Top, // изменил на Top для корректного скролла
+            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start
         ) {
-            Text("Мои программы:")
+            Text("Мои тренировки:")
             Spacer(modifier = Modifier.height(8.dp))
 
-            EtalonProgramsList() // 👈 Добавили виджет программ сюда
+            EtalonWorkoutList();
 
             Spacer(modifier = Modifier.height(16.dp))
 

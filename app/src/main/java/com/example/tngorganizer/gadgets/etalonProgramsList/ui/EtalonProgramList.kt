@@ -10,13 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.tngorganizer.features.addEtalonProgram.ui.AddEtalonProgramInput
+import com.example.tngorganizer.gadgets.etalonProgramsList.models.ProgramViewModel
+import com.example.tngorganizer.shared.lib.provides.LocalNavController
 import com.example.tngorganizer.widgets.etalonProgramItem.ui.EtalonProgramItem
-import com.example.tngorganizer.widgets.etalonProgramList.models.ProgramViewModel
 
 @Composable
 fun EtalonProgramsList(
     viewModel: ProgramViewModel = hiltViewModel()
 ) {
+    val navController = LocalNavController.current
     val programs by viewModel.programs.collectAsState()
 
     if (programs.isEmpty()) {
@@ -37,7 +39,7 @@ fun EtalonProgramsList(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(programs) { program ->
-                EtalonProgramItem(program)
+                EtalonProgramItem(program = program, navController = navController)
             }
         }
     }

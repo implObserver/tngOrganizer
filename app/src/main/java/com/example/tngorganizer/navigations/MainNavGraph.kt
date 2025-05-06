@@ -1,33 +1,58 @@
 package com.example.tngorganizer.navigations
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.tngorganizer.navigations.screens.ExerciseScreen
 import com.example.tngorganizer.navigations.screens.MainScreen
 import com.example.tngorganizer.navigations.screens.ProgramsScreen
+import com.example.tngorganizer.navigations.screens.WorkoutScreen
+import com.example.tngorganizer.shared.lib.provides.LocalNavController
 
 @Composable
-fun MainNavGraph(
-    navController: NavHostController = rememberNavController()
-) {
-    NavHost(
-        navController = navController,
-        startDestination = "main"  // Стартовая страница
-    ) {
-        // Главный экран
-        composable("main") {
-            MainScreen(
-                onProgramsClick = { navController.navigate("programs") }
-            )
-        }
+fun MainNavGraph() {
+    val navController = rememberNavController()
+    CompositionLocalProvider(LocalNavController provides navController) {
+        NavHost(
+            navController = navController,
+            startDestination = "main"  // Стартовая страница
+        ) {
+            // Главный экран
+            composable("main") {
+                MainScreen(
+                    onProgramsClick = { navController.navigate("programs") }
+                )
+            }
 
-        // Список программ
-        composable("programs") {
-            ProgramsScreen(
-                onMainClick = { navController.navigate("main") }
-            )
+            // Список программ
+            composable("programs") {
+                ProgramsScreen(
+                    onMainClick = { navController.navigate("main") }
+                )
+            }
+
+            composable(
+                route = "program/{programId}/workouts",
+                arguments = listOf(navArgument("programId") { type = NavType.LongType })
+            ) {
+                WorkoutScreen(
+                    onMainClick = { navController.navigate("main") }
+                )
+            }
+
+            composable(
+                route = "program/{programId}/workouts/{workoutId}",
+                arguments = listOf(navArgument("programId") { type = NavType.LongType },navArgument("workoutId") { type = NavType.LongType })
+            ) {
+                ExerciseScreen(
+                    onMainClick = { navController.navigate("main") }
+                )
+            }
         }
     }
 }
