@@ -11,17 +11,19 @@ import com.example.tngorganizer.services.models.exemplar.*
     entities = [
         ProgramEntity::class,
         WorkoutEntity::class,
+        WorkoutGroupEntity::class,
         ExerciseEntity::class,
         ScheduledWorkoutEntity::class,
         WorkoutExemplar::class,
         ExerciseExemplar::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun programDao(): ProgramDao
     abstract fun workoutDao(): WorkoutDao
+    abstract fun groupDao(): WorkoutGroupDao
     abstract fun exerciseDao(): ExerciseDao
     abstract fun scheduledWorkoutDao(): ScheduledWorkoutDao
     abstract fun workoutExemplarDao():WorkoutExemplarDao

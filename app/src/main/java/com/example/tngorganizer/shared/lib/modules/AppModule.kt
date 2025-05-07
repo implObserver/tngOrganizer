@@ -1,4 +1,4 @@
-package com.example.tngorganizer.di
+package com.example.tngorganizer.shared.lib.modules
 
 import android.content.Context
 import androidx.room.Room
@@ -32,6 +32,7 @@ object AppModule {
     // --- DAOs ---
     @Provides fun provideProgramDao(db: AppDatabase): ProgramDao = db.programDao()
     @Provides fun provideWorkoutDao(db: AppDatabase): WorkoutDao = db.workoutDao()
+    @Provides fun provideWorkoutGroupDao(db: AppDatabase): WorkoutGroupDao = db.groupDao()
     @Provides fun provideExerciseDao(db: AppDatabase): ExerciseDao = db.exerciseDao()
     @Provides fun provideScheduledWorkoutDao(db: AppDatabase): ScheduledWorkoutDao = db.scheduledWorkoutDao()
     @Provides fun provideWorkoutExemplarDao(db: AppDatabase): WorkoutExemplarDao = db.workoutExemplarDao()
@@ -47,6 +48,11 @@ object AppModule {
     @Singleton
     fun provideWorkoutRepository(workoutDao: WorkoutDao): WorkoutRepository =
         WorkoutRepository(workoutDao)
+
+    @Provides
+    @Singleton
+    fun provideWorkoutGroupRepository(workoutGroupDao: WorkoutGroupDao): WorkoutGroupRepository =
+        WorkoutGroupRepository(workoutGroupDao)
 
     @Provides
     @Singleton

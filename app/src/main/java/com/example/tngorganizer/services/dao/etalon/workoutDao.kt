@@ -20,4 +20,7 @@ interface WorkoutDao {
 
     @Query("SELECT * FROM workouts WHERE programId = :programId ORDER BY name ASC")
     fun getAllWorkoutsByProgramId(programId: Long): Flow<List<WorkoutEntity>>
+
+    @Query("SELECT * FROM workouts WHERE groupId = :groupId ORDER BY name ASC")
+    fun getAllWorkoutsByGroupId(groupId: Long): Flow<List<WorkoutEntity>>
 }

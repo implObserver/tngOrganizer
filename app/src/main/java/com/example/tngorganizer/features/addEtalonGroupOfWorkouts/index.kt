@@ -1,0 +1,2 @@
+package com.example.tngorganizer.features.addEtalonGroupOfWorkouts
+import com.example.tngorganizer.features.addEtalonGroupOfWorkouts.ui.AddEtalonGroupOfWorkoutsInput

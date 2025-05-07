@@ -1,11 +1,19 @@
 package com.example.tngorganizer.navigations.screens
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
+import com.example.tngorganizer.features.addEtalonGroupOfWorkouts.ui.AddEtalonGroupOfWorkoutsInput
+import com.example.tngorganizer.features.addEtalonWorkout.ui.AddEtalonWorkoutInput
+import com.example.tngorganizer.gadgets.etalonGroupOfWorkoutsList.ui.EtalonGroupOfWorkoutsList
 import com.example.tngorganizer.gadgets.etalonWorkoutList.ui.EtalonWorkoutList
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -22,20 +30,13 @@ fun WorkoutScreen(onMainClick: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.Start
+                .padding(horizontal = 16.dp) // Только горизонтальные отступы
         ) {
-            Text("Мои тренировки:")
-            Spacer(modifier = Modifier.height(8.dp))
-
-            EtalonWorkoutList();
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Button(onClick = onMainClick) {
-                Text("Перейти на главную")
-            }
+            EtalonGroupOfWorkoutsList()
+            EtalonWorkoutList()
+            AddEtalonGroupOfWorkoutsInput()
+            Text("или")
+            AddEtalonWorkoutInput()
         }
     }
 }

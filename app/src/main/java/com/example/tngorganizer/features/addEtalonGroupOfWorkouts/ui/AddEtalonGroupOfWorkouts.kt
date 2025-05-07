@@ -1,4 +1,4 @@
-package com.example.tngorganizer.features.addEtalonWorkout.ui
+package com.example.tngorganizer.features.addEtalonGroupOfWorkouts.ui
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -7,12 +7,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.tngorganizer.features.addEtalonProgram.models.AddEtalonGroupOfWorkoutsViewModel
 import com.example.tngorganizer.features.addEtalonProgram.models.AddEtalonWorkoutViewModel
 import com.example.tngorganizer.services.models.etalon.WorkoutEntity
+import com.example.tngorganizer.services.models.etalon.WorkoutGroupEntity
 
 @Composable
-fun AddEtalonWorkoutInput(
-    viewModel: AddEtalonWorkoutViewModel = hiltViewModel()
+fun AddEtalonGroupOfWorkoutsInput(
+    viewModel: AddEtalonGroupOfWorkoutsViewModel = hiltViewModel()
 ) {
     var name by remember { mutableStateOf("") }
     val programId = viewModel.programId
@@ -26,7 +28,7 @@ fun AddEtalonWorkoutInput(
         TextField(
             value = name,
             onValueChange = { name = it },
-            placeholder = { Text("Название") },
+            placeholder = { Text("Группа тренировок") },
             modifier = Modifier
                 .weight(1f)
                 .padding(end = 8.dp)
@@ -34,10 +36,12 @@ fun AddEtalonWorkoutInput(
         Button(
             onClick = {
                 if (name.isNotBlank() && programId != null ) {
-                    viewModel.addWorkout(WorkoutEntity(
+                    viewModel.addGroup(
+                        WorkoutGroupEntity(
                         programId = programId.toInt(),
                         name = name
-                    ))
+                    )
+                    )
                     name = "" // очищаем поле
                 }
             },
