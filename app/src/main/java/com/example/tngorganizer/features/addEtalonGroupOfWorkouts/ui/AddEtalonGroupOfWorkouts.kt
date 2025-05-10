@@ -36,7 +36,7 @@ fun AddEtalonGroupOfWorkoutsInput(
                 if (name.isNotBlank() && programId != null ) {
                     viewModel.addGroup(
                         WorkoutGroupEntity(
-                        programId = programId.toInt(),
+                        programId = programId,
                         name = name
                     )
                     )

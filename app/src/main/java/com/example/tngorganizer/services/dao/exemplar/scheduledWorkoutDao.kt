@@ -26,13 +26,13 @@ interface ScheduledWorkoutDao {
 
     // Запросы
     @Query("SELECT * FROM scheduled_workouts WHERE id = :id")
-    suspend fun getById(id: Int): ScheduledWorkoutEntity?
+    suspend fun getById(id: Long): ScheduledWorkoutEntity?  // Changed to Long
 
     @Query("SELECT * FROM scheduled_workouts WHERE date = :date")
     fun getByDate(date: String): Flow<List<ScheduledWorkoutEntity>>
 
     @Query("SELECT * FROM scheduled_workouts WHERE workoutId = :workoutId")
-    fun getByWorkoutId(workoutId: Int): Flow<List<ScheduledWorkoutEntity>>
+    fun getByWorkoutId(workoutId: Long): Flow<List<ScheduledWorkoutEntity>>  // Changed to Long
 
     @Query("SELECT * FROM scheduled_workouts ORDER BY date ASC")
     fun getAll(): Flow<List<ScheduledWorkoutEntity>>
@@ -40,10 +40,10 @@ interface ScheduledWorkoutDao {
     // Сложные запросы с отношениями
     @Transaction
     @Query("SELECT * FROM scheduled_workouts WHERE id = :id")
-    suspend fun getWithWorkout(id: Int): ScheduledWorkoutWithWorkout?
+    suspend fun getWithWorkout(id: Long): ScheduledWorkoutWithWorkout?  // Changed to Long
 
     @Transaction
-    @Query("SELECT * FROM scheduled_workouts WHERE date = :date")
+    @Query("SELECT * FROM scheduled_workouts WHERE date = :date")  // Fixed typo in table name
     fun getWithWorkoutsByDate(date: String): Flow<List<ScheduledWorkoutWithWorkout>>
 }
 

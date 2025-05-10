@@ -25,11 +25,11 @@ import com.example.tngorganizer.services.models.etalon.ExerciseEntity
     indices = [Index("workoutInstanceId"), Index("templateId")]
 )
 data class ExerciseExemplar(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val workoutInstanceId: Int,
-    val templateId: Int?,
-    val sets: Int,
-    val reps: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val workoutInstanceId: Long,
+    val templateId: Long?,
+    val sets: Long,
+    val reps: Long,
     val weight: Float,
     val comment: String? = null,
     val createdAt: Long = System.currentTimeMillis(),

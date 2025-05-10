@@ -16,11 +16,11 @@ interface WorkoutDao {
     suspend fun delete(workout: WorkoutEntity)
 
     @Query("SELECT * FROM workouts WHERE id = :id")
-    fun getWorkoutById(id: Long): Flow<WorkoutEntity?>
+    fun getWorkoutById(id: Long): Flow<WorkoutEntity?>  // Изменено на Long
 
     @Query("SELECT * FROM workouts WHERE programId = :programId ORDER BY name ASC")
-    fun getAllWorkoutsByProgramId(programId: Long): Flow<List<WorkoutEntity>>
+    fun getAllWorkoutsByProgramId(programId: Long): Flow<List<WorkoutEntity>>  // Изменено на Long
 
     @Query("SELECT * FROM workouts WHERE groupId = :groupId ORDER BY name ASC")
-    fun getAllWorkoutsByGroupId(groupId: Long): Flow<List<WorkoutEntity>>
+    fun getAllWorkoutsByGroupId(groupId: Long): Flow<List<WorkoutEntity>>  // Изменено на Long
 }

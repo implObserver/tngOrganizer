@@ -26,19 +26,19 @@ interface WorkoutExemplarDao {
 
     // Запросы
     @Query("SELECT * FROM workout_exemplars WHERE id = :id")
-    suspend fun getById(id: Int): WorkoutExemplar?
+    suspend fun getById(id: Long): WorkoutExemplar?  // Changed to Long
 
     @Query("SELECT * FROM workout_exemplars WHERE scheduledWorkoutId = :scheduledWorkoutId")
-    fun getByScheduledWorkoutId(scheduledWorkoutId: Int): Flow<List<WorkoutExemplar>>
+    fun getByScheduledWorkoutId(scheduledWorkoutId: Long): Flow<List<WorkoutExemplar>>  // Changed to Long
 
     // Сложные запросы с отношениями
     @Transaction
     @Query("SELECT * FROM workout_exemplars WHERE id = :id")
-    suspend fun getWithScheduledWorkout(id: Int): WorkoutExemplarWithScheduledWorkout?
+    suspend fun getWithScheduledWorkout(id: Long): WorkoutExemplarWithScheduledWorkout?  // Changed to Long
 
     @Transaction
     @Query("SELECT * FROM workout_exemplars WHERE scheduledWorkoutId = :scheduledWorkoutId")
-    fun getWithScheduledWorkouts(scheduledWorkoutId: Int): Flow<List<WorkoutExemplarWithScheduledWorkout>>
+    fun getWithScheduledWorkouts(scheduledWorkoutId: Long): Flow<List<WorkoutExemplarWithScheduledWorkout>>  // Changed to Long
 }
 
 data class WorkoutExemplarWithScheduledWorkout(

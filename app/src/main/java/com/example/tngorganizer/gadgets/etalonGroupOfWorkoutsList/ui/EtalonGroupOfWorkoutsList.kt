@@ -20,16 +20,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.tngorganizer.features.addEtalonGroupOfWorkouts.ui.AddEtalonGroupOfWorkoutsInput
-import com.example.tngorganizer.features.addEtalonWorkout.ui.AddEtalonWorkoutInput
 import com.example.tngorganizer.gadgets.etalonGroupOfWorkoutsList.models.GroupsOfWorkoutsViewModel
-import com.example.tngorganizer.gadgets.etalonWorkoutList.models.WorkoutsViewModel
+import com.example.tngorganizer.services.models.etalon.WorkoutEntity
 import com.example.tngorganizer.shared.lib.provides.LocalNavController
-import com.example.tngorganizer.widgets.etalonGroupOfWorkoutsItem.ui.ExpandableGroupItem
 import com.example.tngorganizer.widgets.etalonWorkoutItem.ui.EtalonWorkoutItem
+import com.example.tngorganizer.widgets.workoutsOfGroup.ui.WorkoutsOfGroup
 
 @Composable
 fun EtalonGroupOfWorkoutsList(
@@ -61,7 +58,12 @@ fun EtalonGroupOfWorkoutsList(
             ) {
                 groups.forEach { group ->
                     key(group.id) {
-                        ExpandableGroupItem(group)
+                        WorkoutsOfGroup<WorkoutEntity>(
+                            group,
+                            content = { workout ->
+                                EtalonWorkoutItem(workout, programId, navController)
+                            }
+                        )
                     }
                 }
             }

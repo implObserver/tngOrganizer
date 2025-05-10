@@ -19,8 +19,8 @@ import com.example.tngorganizer.services.models.etalon.WorkoutEntity
     indices = [Index("workoutId"), Index("date")]
 )
 data class ScheduledWorkoutEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val workoutId: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val workoutId: Long,
     val date: String, // формат YYYY-MM-DD
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis()

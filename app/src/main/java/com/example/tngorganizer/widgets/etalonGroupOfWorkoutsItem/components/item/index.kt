@@ -1,3 +1,0 @@
-package com.example.tngorganizer.widgets.etalonGroupOfWorkoutsItem.components.item
-
-import com.example.tngorganizer.widgets.etalonGroupOfWorkoutsItem.components.item.ui.WorkoutsOfGroupItem

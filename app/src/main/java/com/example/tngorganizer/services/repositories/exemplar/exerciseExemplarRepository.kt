@@ -12,11 +12,11 @@ class ExerciseExemplarRepository @Inject constructor(
     private val exemplarDao: ExerciseExemplarDao
 ) {
     // Получить все экземляры по ID тренировки
-    fun getAllByWorkoutInstance(workoutInstanceId: Int): Flow<List<ExerciseExemplar>> =
+    fun getAllByWorkoutInstance(workoutInstanceId: Long): Flow<List<ExerciseExemplar>> =
         exemplarDao.getByWorkoutInstanceId(workoutInstanceId)
 
     // Получить по шаблону
-    fun getAllByTemplateId(templateId: Int?): Flow<List<ExerciseExemplar>> =
+    fun getAllByTemplateId(templateId: Long?): Flow<List<ExerciseExemplar>> =
         exemplarDao.getByTemplateId(templateId)
 
     // Вставка
@@ -29,13 +29,13 @@ class ExerciseExemplarRepository @Inject constructor(
     suspend fun delete(exemplar: ExerciseExemplar) = exemplarDao.delete(exemplar)
 
     // Получить по ID
-    suspend fun getById(id: Int): ExerciseExemplar? = exemplarDao.getById(id)
+    suspend fun getById(id: Long): ExerciseExemplar? = exemplarDao.getById(id)
 
     // Получить с шаблоном по ID
-    suspend fun getWithTemplate(id: Int): ExerciseExemplarWithTemplate? =
+    suspend fun getWithTemplate(id: Long): ExerciseExemplarWithTemplate? =
         exemplarDao.getWithTemplate(id)
 
     // Получить все с шаблонами по экземпляру тренировки
-    fun getWithTemplatesByWorkoutInstance(workoutInstanceId: Int): Flow<List<ExerciseExemplarWithTemplate>> =
+    fun getWithTemplatesByWorkoutInstance(workoutInstanceId: Long): Flow<List<ExerciseExemplarWithTemplate>> =
         exemplarDao.getWithTemplatesByWorkoutInstance(workoutInstanceId)
 }

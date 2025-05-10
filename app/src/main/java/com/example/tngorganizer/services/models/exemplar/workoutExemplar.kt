@@ -18,8 +18,8 @@ import androidx.room.PrimaryKey
     indices = [Index("scheduledWorkoutId")]
 )
 data class WorkoutExemplar(  // Изменено имя класса
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val scheduledWorkoutId: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val scheduledWorkoutId: Long,
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis()
 )

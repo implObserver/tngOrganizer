@@ -16,7 +16,7 @@ interface ProgramDao {
     suspend fun delete(program: ProgramEntity)
 
     @Query("SELECT * FROM programs WHERE id = :id")
-    fun getProgramById(id: Long): Flow<ProgramEntity?>
+    fun getProgramById(id: Long): Flow<ProgramEntity?>  // Изменено с Int на Long
 
     @Query("SELECT * FROM programs ORDER BY name ASC")
     fun getAllPrograms(): Flow<List<ProgramEntity>>

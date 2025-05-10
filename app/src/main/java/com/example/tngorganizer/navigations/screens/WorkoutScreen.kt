@@ -34,23 +34,19 @@ fun WorkoutScreen(onMainClick: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             item {
-                EtalonGroupOfWorkoutsList()
-            }
-
-            item {
-                EtalonWorkoutList()
-            }
-
-            item {
                 AddEtalonGroupOfWorkoutsInput()
             }
 
             item {
-                Text("или")
+                EtalonGroupOfWorkoutsList()
             }
 
             item {
                 AddEtalonWorkoutInput()
+            }
+
+            item {
+                EtalonWorkoutList()
             }
         }
     }

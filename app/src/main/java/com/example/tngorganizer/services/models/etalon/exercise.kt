@@ -18,10 +18,12 @@ import androidx.room.PrimaryKey
     indices = [Index("workoutId")]
 )
 data class ExerciseEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,  // Изменено на Long
+
     val name: String,
     val isOneSided: Boolean = false,
-    val workoutId: Int,
+    val workoutId: Long,  // Изменено на Long
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis()
 )

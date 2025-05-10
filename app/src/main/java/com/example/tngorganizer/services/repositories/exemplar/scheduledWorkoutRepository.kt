@@ -28,16 +28,16 @@ class ScheduledWorkoutRepository @Inject constructor(
     fun getScheduledWorkoutsByDate(date: String): Flow<List<ScheduledWorkoutEntity>> =
         scheduledDao.getByDate(date)
 
-    fun getScheduledWorkoutsByWorkoutId(workoutId: Int): Flow<List<ScheduledWorkoutEntity>> =
+    fun getScheduledWorkoutsByWorkoutId(workoutId: Long): Flow<List<ScheduledWorkoutEntity>> =
         scheduledDao.getByWorkoutId(workoutId)
 
     // ✅ Получить с вложенными Workout
     fun getScheduledWithWorkoutsByDate(date: String): Flow<List<ScheduledWorkoutWithWorkout>> =
         scheduledDao.getWithWorkoutsByDate(date)
 
-    suspend fun getScheduledWorkoutById(id: Int): ScheduledWorkoutEntity? =
+    suspend fun getScheduledWorkoutById(id: Long): ScheduledWorkoutEntity? =
         scheduledDao.getById(id)
 
-    suspend fun getScheduledWorkoutWithWorkout(id: Int): ScheduledWorkoutWithWorkout? =
+    suspend fun getScheduledWorkoutWithWorkout(id: Long): ScheduledWorkoutWithWorkout? =
         scheduledDao.getWithWorkout(id)
 }

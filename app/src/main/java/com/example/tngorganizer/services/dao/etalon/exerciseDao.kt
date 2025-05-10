@@ -20,4 +20,11 @@ interface ExerciseDao {
 
     @Query("SELECT * FROM exercises WHERE workoutId = :workoutId ORDER BY name ASC")
     fun getAllExercisesByWorkout(workoutId: Long): Flow<List<ExerciseEntity>>
+
+    // Опционально: транзакционный метод
+    @Transaction
+    suspend fun replaceExercise(newExercise: ExerciseEntity) {
+        delete(newExercise)
+        insert(newExercise)
+    }
 }

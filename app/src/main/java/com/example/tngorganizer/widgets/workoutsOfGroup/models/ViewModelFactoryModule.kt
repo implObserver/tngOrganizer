@@ -1,4 +1,4 @@
-package com.example.tngorganizer.widgets.etalonGroupOfWorkoutsItem.components.item.models
+package com.example.tngorganizer.widgets.workoutsOfGroup.models
 
 import com.example.tngorganizer.services.repositories.etalon.WorkoutRepository
 import dagger.Module

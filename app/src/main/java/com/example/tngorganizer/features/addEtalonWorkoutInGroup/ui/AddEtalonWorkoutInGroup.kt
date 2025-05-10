@@ -37,8 +37,8 @@ fun AddEtalonWorkoutInGroupInput(
             onClick = {
                 if (name.isNotBlank() && programId != null ) {
                     viewModel.addWorkout(WorkoutEntity(
-                        programId = programId.toInt(),
-                        groupId=groupId.toInt(),
+                        programId = programId,
+                        groupId=groupId,
                         name = name
                     ))
                     name = "" // очищаем поле

@@ -26,22 +26,22 @@ class WorkoutExemplarRepository @Inject constructor(
     }
 
     // Получение одного экземпляра по id
-    suspend fun getById(id: Int): WorkoutExemplar? {
+    suspend fun getById(id: Long): WorkoutExemplar? {
         return dao.getById(id)
     }
 
     // Получение всех по scheduledWorkoutId
-    fun getByScheduledWorkoutId(scheduledWorkoutId: Int): Flow<List<WorkoutExemplar>> {
+    fun getByScheduledWorkoutId(scheduledWorkoutId: Long): Flow<List<WorkoutExemplar>> {
         return dao.getByScheduledWorkoutId(scheduledWorkoutId)
     }
 
     // Получение с отношениями (одного)
-    suspend fun getWithScheduledWorkout(id: Int): WorkoutExemplarWithScheduledWorkout? {
+    suspend fun getWithScheduledWorkout(id: Long): WorkoutExemplarWithScheduledWorkout? {
         return dao.getWithScheduledWorkout(id)
     }
 
     // Получение с отношениями (списка)
-    fun getWithScheduledWorkouts(scheduledWorkoutId: Int): Flow<List<WorkoutExemplarWithScheduledWorkout>> {
+    fun getWithScheduledWorkouts(scheduledWorkoutId: Long): Flow<List<WorkoutExemplarWithScheduledWorkout>> {
         return dao.getWithScheduledWorkouts(scheduledWorkoutId)
     }
 }

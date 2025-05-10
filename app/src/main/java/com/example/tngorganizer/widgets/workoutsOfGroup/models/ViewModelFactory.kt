@@ -1,4 +1,4 @@
-package com.example.tngorganizer.widgets.etalonGroupOfWorkoutsItem.components.item.models
+package com.example.tngorganizer.widgets.workoutsOfGroup.models
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

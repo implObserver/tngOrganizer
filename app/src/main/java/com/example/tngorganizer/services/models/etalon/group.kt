@@ -19,9 +19,9 @@ import com.example.tngorganizer.services.models.etalon.ProgramEntity
     indices = [Index("programId")]
 )
 data class WorkoutGroupEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val name: String,
-    val programId: Int, // Группа принадлежит программе
+    val programId: Long, // Группа принадлежит программе
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis()
 )
