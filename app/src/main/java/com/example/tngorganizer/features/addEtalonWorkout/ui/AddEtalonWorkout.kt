@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.tngorganizer.features.addEtalonProgram.models.AddEtalonWorkoutViewModel
+import com.example.tngorganizer.features.addEtalonWorkout.models.AddEtalonWorkoutViewModel
 import com.example.tngorganizer.services.models.etalon.WorkoutEntity
 
 @Composable

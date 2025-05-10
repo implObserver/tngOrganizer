@@ -1,2 +1,2 @@
 package com.example.tngorganizer.features.addEtalonProgram
-
+import com.example.tngorganizer.features.addEtalonProgram.ui.AddEtalonProgramInput

@@ -26,17 +26,32 @@ fun WorkoutScreen(onMainClick: () -> Unit) {
             )
         }
     ) { innerPadding ->
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(horizontal = 16.dp) // Только горизонтальные отступы
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            EtalonGroupOfWorkoutsList()
-            EtalonWorkoutList()
-            AddEtalonGroupOfWorkoutsInput()
-            Text("или")
-            AddEtalonWorkoutInput()
+            item {
+                EtalonGroupOfWorkoutsList()
+            }
+
+            item {
+                EtalonWorkoutList()
+            }
+
+            item {
+                AddEtalonGroupOfWorkoutsInput()
+            }
+
+            item {
+                Text("или")
+            }
+
+            item {
+                AddEtalonWorkoutInput()
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.tngorganizer.features.addEtalonGroupOfWorkouts.ui
+package com.example.tngorganizer.features.addEtalonWorkoutInGroup.ui
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -7,12 +7,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.tngorganizer.features.addEtalonProgram.models.AddEtalonGroupOfWorkoutsViewModel
-import com.example.tngorganizer.services.models.etalon.WorkoutGroupEntity
+import com.example.tngorganizer.features.addEtalonWorkoutInGroup.models.AddEtalonWorkoutInGroupViewModel
+import com.example.tngorganizer.services.models.etalon.WorkoutEntity
+
 
 @Composable
-fun AddEtalonGroupOfWorkoutsInput(
-    viewModel: AddEtalonGroupOfWorkoutsViewModel = hiltViewModel()
+fun AddEtalonWorkoutInGroupInput(
+    groupId: Long,
+    viewModel: AddEtalonWorkoutInGroupViewModel = hiltViewModel()
 ) {
     var name by remember { mutableStateOf("") }
     val programId = viewModel.programId
@@ -26,7 +28,7 @@ fun AddEtalonGroupOfWorkoutsInput(
         TextField(
             value = name,
             onValueChange = { name = it },
-            placeholder = { Text("Группа тренировок") },
+            placeholder = { Text("Тренировка") },
             modifier = Modifier
                 .weight(1f)
                 .padding(end = 8.dp)
@@ -34,12 +36,11 @@ fun AddEtalonGroupOfWorkoutsInput(
         Button(
             onClick = {
                 if (name.isNotBlank() && programId != null ) {
-                    viewModel.addGroup(
-                        WorkoutGroupEntity(
+                    viewModel.addWorkout(WorkoutEntity(
                         programId = programId.toInt(),
+                        groupId=groupId.toInt(),
                         name = name
-                    )
-                    )
+                    ))
                     name = "" // очищаем поле
                 }
             },

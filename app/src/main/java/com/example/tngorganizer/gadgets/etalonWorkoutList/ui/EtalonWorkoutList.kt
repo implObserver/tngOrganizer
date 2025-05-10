@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.tngorganizer.gadgets.etalonWorkoutList.models.WorkoutsViewModel
 import com.example.tngorganizer.shared.lib.provides.LocalNavController
+import com.example.tngorganizer.widgets.etalonGroupOfWorkoutsItem.ui.ExpandableGroupItem
 import com.example.tngorganizer.widgets.etalonWorkoutItem.ui.EtalonWorkoutItem
 
 @Composable
@@ -48,12 +49,11 @@ fun EtalonWorkoutList(
                 Text("В вашу программу еще не добавлены тренировки без группы")
             }
         } else {
-            LazyColumn(
+            Column(
                 modifier = Modifier.fillMaxWidth(),
-                contentPadding = PaddingValues(horizontal = 16.dp), // Только горизонтальные отступы
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                items(workouts) { workout ->
+                workouts.forEach { workout ->
                     EtalonWorkoutItem(workout, programId, navController)
                 }
             }

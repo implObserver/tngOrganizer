@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -54,13 +55,14 @@ fun EtalonGroupOfWorkoutsList(
                 Text("В вашу программу еще не добавлены группы тренировок")
             }
         } else {
-            LazyColumn(
+            Column(
                 modifier = Modifier.fillMaxWidth(),
-                contentPadding = PaddingValues(horizontal = 16.dp), // Только горизонтальные отступы
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                items(groups) { group ->
-                    ExpandableGroupItem(group)
+                groups.forEach { group ->
+                    key(group.id) {
+                        ExpandableGroupItem(group)
+                    }
                 }
             }
         }
