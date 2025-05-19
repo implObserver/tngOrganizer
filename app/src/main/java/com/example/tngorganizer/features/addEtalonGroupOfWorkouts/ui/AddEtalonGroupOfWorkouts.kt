@@ -33,12 +33,13 @@ fun AddEtalonGroupOfWorkoutsInput(
         )
         Button(
             onClick = {
-                if (name.isNotBlank() && programId != null ) {
+                val normalizedName = name.trim().replace(Regex("\\s+"), " ")
+                if (normalizedName.isNotBlank() && programId != null) {
                     viewModel.addGroup(
                         WorkoutGroupEntity(
-                        programId = programId,
-                        name = name
-                    )
+                            programId = programId,
+                            name = normalizedName
+                        )
                     )
                     name = "" // очищаем поле
                 }

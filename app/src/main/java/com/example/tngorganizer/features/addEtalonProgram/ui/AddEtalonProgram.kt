@@ -32,8 +32,9 @@ fun AddEtalonProgramInput(
         )
         Button(
             onClick = {
-                if (name.isNotBlank()) {
-                    viewModel.addProgram(ProgramEntity(name = name))
+                val normalizedName = name.trim().replace(Regex("\\s+"), " ")
+                if (normalizedName.isNotBlank()) {
+                    viewModel.addProgram(ProgramEntity(name = normalizedName))
                     name = "" // очищаем поле
                 }
             },

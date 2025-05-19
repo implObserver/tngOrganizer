@@ -1,41 +1,41 @@
-package com.example.tngorganizer.gadgets.etalonGroupOfWorkoutsList.models
+package com.example.tngorganizer.navigations.screens.workoutScreen.models
 
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tngorganizer.services.models.etalon.ProgramEntity
-import com.example.tngorganizer.services.models.etalon.WorkoutEntity
 import com.example.tngorganizer.services.models.etalon.WorkoutGroupEntity
+import com.example.tngorganizer.services.repositories.etalon.ProgramRepository
 import com.example.tngorganizer.services.repositories.etalon.WorkoutGroupRepository
-import com.example.tngorganizer.services.repositories.etalon.WorkoutRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class GroupsOfWorkoutsViewModel @Inject constructor(
-    private val groupsRepository: WorkoutGroupRepository,
+class WorkoutScreenViewModel @Inject constructor(
+    private val programRepository: ProgramRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     val programId: Long? = savedStateHandle["programId"]
-    private val _groups = MutableStateFlow<List<WorkoutGroupEntity>>(emptyList())
-    val groups: StateFlow<List<WorkoutGroupEntity>> = _groups.asStateFlow()
+    private val _program = MutableStateFlow<ProgramEntity?>(null)
+    val program: StateFlow<ProgramEntity?> = _program.asStateFlow()
+
     init {
         Log.e("WorkoutViewModel", "SavedStateHandle keys: ${savedStateHandle.keys()}")
 
         if (programId != null) {
-            loadGroupsOfWorkouts(programId)
+            loadProgram(programId)
         } else {
             Log.e("WorkoutViewModel", "❌ programId is NULL in SavedStateHandle")
         }
     }
 
-    private fun loadGroupsOfWorkouts(programId: Long) {
+    private fun loadProgram(programId: Long) {
         viewModelScope.launch {
-            groupsRepository.getAllGroupsByProgram(programId)
-                .collect { _groups.value = it }
+            programRepository.getProgramById(programId)
+                .collect { _program.value = it }
         }
     }
 }

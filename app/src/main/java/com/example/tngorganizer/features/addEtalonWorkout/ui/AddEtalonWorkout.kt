@@ -33,11 +33,14 @@ fun AddEtalonWorkoutInput(
         )
         Button(
             onClick = {
-                if (name.isNotBlank() && programId != null ) {
-                    viewModel.addWorkout(WorkoutEntity(
-                        programId = programId,
-                        name = name
-                    ))
+                val normalizedName = name.trim().replace(Regex("\\s+"), " ")
+                if (normalizedName.isNotBlank() && programId != null) {
+                    viewModel.addWorkout(
+                        WorkoutEntity(
+                            programId = programId,
+                            name = normalizedName
+                        )
+                    )
                     name = "" // очищаем поле
                 }
             },

@@ -2,16 +2,15 @@ package com.example.tngorganizer.navigations
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.tngorganizer.navigations.screens.ExerciseScreen
+import com.example.tngorganizer.navigations.screens.exerciseScreen.ui.ExerciseScreen
 import com.example.tngorganizer.navigations.screens.MainScreen
 import com.example.tngorganizer.navigations.screens.ProgramsScreen
-import com.example.tngorganizer.navigations.screens.WorkoutScreen
+import com.example.tngorganizer.navigations.screens.workoutScreen.ui.WorkoutScreen
 import com.example.tngorganizer.shared.lib.provides.LocalNavController
 
 @Composable
